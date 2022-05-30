@@ -1,0 +1,191 @@
+{#
+{% extends 'admin/_includes/index1.html.twig' %}
+#}
+
+{% form_theme form _self %}
+   {% block style %}
+       <style>
+           /* .checkbox {
+                height: 20px;
+                margin-left: -23px
+            }*/
+       </style>
+   {% endblock %}
+{% from '_admin/macros/fichier.html.twig' import image %}
+{% block page_content %}
+    {# {% form_theme form 'widget/fields-block.html.twig' %}#}
+    <div class="modal-header bg-secondary-gradient">
+        <h2 class="modal-title" style="margin-top: -15px;color: white">DETAILS-{{ titre | upper  }}
+        </h2>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
+    <div class="modal-body">
+        {# {{ include('includes/ajax/response.html.twig') }} #}
+        <div class="row">
+            <div class="form-group col-md-1">
+
+                {{ form_widget(form.existe,{'attr':{'class':'border-primary checkbox','type':'checkbox','id':'userinput1'}}) }}
+                {{ form_widget(form.etat,{'attr':{'class':'form-control border-primary','type':'hidden','id':'userinput1'}}) }}
+            </div>
+            {# <div class="col-md-6 " style="margin-left: -55px;margin-top: -1px">
+
+                 <span style="font-weight: bolder">Numéro Automatique</span>
+             </div>#}
+
+        </div>
+        <div class="row" id="principal" style="margin-top: -12px">
+            <div class="form-group col-md-8 " id="p2">
+
+                <h3 class="mot">Cochez cette option pour une numérotation automatique</h3>
+                {# <h3 class="mot1">Décochez cette option pour une numérotation personnalisée</h3>#}
+            </div>
+
+        </div>
+        <div class="contenu" style="margin-top: -10px">
+            <div class="row">
+                <div class="form-group col-md-6 ">
+                    <label class="sr-onl" for="userinput1">Date de réception</label>
+                    {{ form_widget(form.dateReception,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'NOM','required':'required'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="sr-onl" for="userinput1">N d'enregistrement</label>
+                    {{ form_widget(form.numero,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Numero'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12 ">
+                    <label class="sr-onl" for="userinput1">Rangement</label>
+                    {{ form_widget(form.rangement,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'rangement'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12 ">
+                    <label class="sr-onl" for="userinput1">Objet</label>
+                    {{ form_widget(form.objet,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Objet','required':'required'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+            </div>
+
+            <div >
+                <div class="row">
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">Expéditeur</label>
+                        {{ form_widget(form.expediteur,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Expéditeur'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                    <div class="form-group col-md-6 arrive">
+                        <label class="sr-onl" for="userinput1">Réceptionné par</label>
+                        {{ form_widget(form.user,{'attr':{'class':'form-select form-control border-primary','id':'userinput1','placeholder':'Réceptionné par'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                    <div class="form-group col-md-6 autre">
+                        <label class="sr-onl" for="userinput1">Réceptionné par</label>
+                        {{ form_widget(form.recep,{'attr':{'class':'form-select form-control border-primary','id':'userinput1','placeholder':'Réceptionné par'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <span class="col-lg-12 groupe" id="groupe" data-prototype="{{ image(form.fichiers.vars.prototype)|e('html_attr') }}">
+  <h4>ARCHIVAGE DES DOCUMENTS</h4>
+            {#   <div class="row" >#}
+     <h3 style="color: blue; text-decoration: underline;">Liste des documents</h3>
+            <br>
+                {% for fichier in data %}
+                    <div class="row">
+           <div class="col-md-7">
+               <div class="form-group">
+
+                   <input class="form-control titre" type="text" value="{{ fichier.titre | upper }}">
+               </div>
+           </div>
+           <div class="col-md-3">
+               <a class="btn btn-primary-gradient" target="_blank" href="{{ asset('uploads/images/' ~ fichier.path) }}"
+                  download> <i class="fe fe-download"></i>
+                   <span style="font-weight: bolder;color: white">Télecharger</span></a>
+           </div>
+       </div>
+                {% endfor %}
+            {% for row in form.fichiers %}
+                <span class="container col-md-12 existe">
+                    {{ image(row|e) }}
+
+                </span>
+            {% endfor %}
+ <input class="after" type="hidden"/>
+        </span>
+
+
+
+    </div>
+    <div class="modal-footer">
+        <a href="{{ path('courierDepart') }}" class="btn btn-secondary">Fermer</a>
+        <button class="btn btn-primary">Valider</button>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
+{#{% include 'admin/macros/fichier.html.twig'  %}#}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/admin/js/jquery3.1.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/groupe.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#courier_arrive_etat').hide();
+            $('.existe').remove();
+            $('.arrive').hide();
+            var check = $(".checkbox").get(0).checked;
+
+
+            if (check === true) {
+                $('#principal .mot').html('Décochez cette option pour une numérotation personnalisée');
+                $('#courier_arrive_numero').attr('readonly', true)
+            }else {
+                $('#principal .mot').html('Ccochez cette option pour une numérotation automatque');
+            }
+
+            $(".checkbox").change(function (e) {
+                const $this = $(this);
+                var mot = $('#principal #p2 .mot')
+
+
+                var res = this.closest('.card-body');
+                if (this.checked) {
+                    $.ajax({
+                        url: '/admin/existe',
+                        type: 'get',
+                        dataType: 'json',
+                        success: function (response, status) {
+                            $('#principal .mot').html('Décochez cette option pour une numérotation personnalisée');
+                            $('#courier_arrive_numero').val(response.nom)
+                            $('#courier_arrive_numero').attr('readonly', true)
+                            //console.log(response.nom);
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                }
+                if (this.checked === false) {
+                    $('#courier_arrive_numero').val('')
+                    $('#principal .mot').html('Cochez cette option pour une numérotation automatique');
+                    $('#courier_arrive_numero').attr('readonly', false)
+                }
+            });
+        })
+
+
+    </script>
+{% endblock %}

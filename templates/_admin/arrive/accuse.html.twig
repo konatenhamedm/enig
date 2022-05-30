@@ -1,0 +1,194 @@
+{#
+{% extends 'admin/_includes/index1.html.twig' %}
+#}
+
+{% form_theme form _self %}
+   {% block style %}
+       <style>
+          /* .checkbox {
+               height: 20px;
+               margin-left: -38px
+           }*/
+       </style>
+   {% endblock %}
+{% from '_admin/macros/fichier-accuse.html.twig' import image %}
+{% block page_content %}
+   {# {% form_theme form 'widget/fields-block.html.twig' %}#}
+    {% set new = menu.getRoute |slice(0, -6) %}
+
+    <div class="modal-header bg-secondary-gradient">
+        <h2 class="modal-title" style="margin-top: -15px;color: white">ACCUSE-{{ titre | upper  }}
+        </h2>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
+    <div class="modal-body">
+        {# {{ include('includes/ajax/response.html.twig') }} #}
+        <div class="row">
+            <div class="form-group col-md-1">
+
+                {{ form_widget(form.etat,{'attr':{'class':'border-primary checkbox','type':'checkbox','id':'userinput1','placeholder':'Etat'}}) }}
+
+            </div>
+            <div class="col-md-6 " style="margin-left: -59px;margin-top: 2px">
+
+                <h3 style="font-weight: bolder">Finaliser le courrier</h3>
+            </div>
+
+        </div>
+        <div class="row" id="principal" style="margin-top: -12px">
+            <div class="form-group col-md-8 " id="p2">
+
+              {#  <h3 class="mot">Cochez cette option pour une numérotation automatique</h3>#}
+                {# <h3 class="mot1">Décochez cette option pour une numérotation personnalisée</h3>#}
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 ">
+                <label class="sr-onl" for="userinput1">Date de réception</label>
+                {{ form_widget(form.dateReception,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'NOM',}}) }}
+                {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+            </div>
+        </div>
+        <span class="col-lg-12 groupe" id="groupe" data-prototype="{{ image(form.fichiers.vars.prototype)|e('html_attr') }}">
+            {% for row in form.fichiers %}
+                <span class="container col-md-12">
+                    {{ image(row|e) }}
+
+                </span>
+            {% endfor %}
+ <input class="after" type="hidden"/>
+        </span>
+
+
+        <div class="contenu" style="margin-top: -10px">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label class="sr-onl" for="userinput1">N d'enregistrement</label>
+                    {{ form_widget(form.numero,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Numero'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6 ">
+                    <label class="sr-onl" for="userinput1">Rangement</label>
+                    {{ form_widget(form.rangement,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'rangement'}}) }}
+                    {{ form_widget(form.existe,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'rangement'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12 ">
+                    <label class="sr-onl" for="userinput1">Objet</label>
+                    {{ form_widget(form.objet,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Objet','required':'required'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+            </div>
+
+            <div >
+                <div class="row">
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">Expéditeur</label>
+                        {{ form_widget(form.expediteur,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Expéditeur'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                    <div class="form-group col-md-6 arrive">
+                        <label class="sr-onl" for="userinput1">Réceptionné par</label>
+                        {{ form_widget(form.user,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Réceptionné par'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                    <div class="form-group col-md-6 autre">
+                        <label class="sr-onl" for="userinput1">Réceptionné par</label>
+                        {{ form_widget(form.recep,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Réceptionné par'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <a href="{{ path(new) }}" class="btn btn-secondary">Fermer</a>
+        <button class="btn btn-primary">Valider</button>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
+{#{% include 'admin/macros/fichier.html.twig'  %}#}
+
+{% block javascripts %}
+    {#  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>#}
+    <script src="{{ asset('admin/admin/js/jquery3.1.js') }}"></script>
+  {#  <script src="{{ asset('assets/admin/js/groupe.js') }}"></script>#}
+<script>
+
+    $(document).ready(function () {
+        $('.contenu').hide();
+        var $collectionHolder;
+
+        $(document).ready(function () {
+            $collectionHolder = $('#groupe');
+            /*$collectionHolder.append($addTagButton);*/
+            $collectionHolder.data('index', $collectionHolder.find('.container').length)
+            $collectionHolder.find('.container').each(function () {
+                addRemoveButton($(this));
+            })
+            addForm();
+            /*$addTagButton.click(function (e) {
+
+                //alert("jhghghg")
+                e.preventDefault();
+                addForm();
+                // $('select').select2();
+            })*/
+
+        })
+
+        function addForm() {
+            var prototype = $collectionHolder.data('prototype');
+            var index = $collectionHolder.data('index');
+            var newForm = prototype;
+            newForm = newForm.replace(/__name__/g, index);
+            $collectionHolder.data('index', index + 1);
+
+            var $card = $('<span class="container col-md-12"></span>')
+            /*  var $cardbody = $('<div class="row"></div>').append(newForm);*/
+
+            $card.append(newForm);
+
+          /*  addRemoveButton($card);*/
+            $collectionHolder.children("input[type='hidden']:first").before($card)
+            //$collectionHolder.find('.after').before($card);
+
+        }
+
+  /*      function addRemoveButton($card) {
+
+            var $removeButton = $('<a href="#" class="btn btn-danger supprimer" style="margin-left: -16px" data-card-tool="remove" data-toggle="tooltip"\n' +
+                '           data-placement="top" title="" data-original-title="Remove Card"><i class="tio-delete icon-nm"></i> </a>');
+            /!*var $cardFooter = $('<div class="modal-footer"></div>').append($removeButton);*!/
+
+            $removeButton.click(function (e) {
+                console.log($(e.target).parent('.container'));
+
+                $(e.target).parents('.container').slideUp(1000, function () {
+                    $(this).remove();
+
+                });
+
+            })
+
+            $card.find(".supprimer").append($removeButton);
+        }*/
+        // $card.find(".supprimer").append($removeButton);
+
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% macro image(image) %}
+
+    <div class="row">
+        <div class="form-group col-md-12 ">
+            <label class="sr-onl" for="userinput1"> <h3>Joindre l'accusé de réception</h3></label>
+            {{ form_row(image.path,{'attr':{'class':'form-control motif','id':'userinput16','placeholder':'Image'}}) }}
+        </div>
+
+       {# <div class="col-md-1  supprimer">
+
+        </div>#}
+
+    </div>
+
+{% endmacro image %}

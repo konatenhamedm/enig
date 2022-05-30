@@ -1,0 +1,3 @@
+affiche_produits:
+  path: /all_products/{id}
+  controller: App\Controller\DefaultController::afficheProduitCategorie

@@ -1,0 +1,30 @@
+{% macro image(image) %}
+    <div class="table-responsive">
+        <table class="table border text-nowrap text-md-nowrap table-hover mb-0">
+            <tbody>
+            <tr>
+              <td>
+            {{ form_row(image.libelle,{'attr':{'class':'form-control','id':'userinput16','placeholder':'Nom du document'}}) }}
+              </td>
+            <td>
+            {{ form_row(image.dateObtention,{'attr':{'class':'form-control ','id':'userinput16','placeholder':'Date obtention'}}) }}
+
+           </td>
+           <td>
+
+            {{ form_row(image.path,{'attr':{'class':'form-control ','id':'userinput16','placeholder':'Le fichier join'}}) }}
+
+           </td>
+            <td width="50">
+                {{ form_row(image.etat,{'attr':{'class':'border-primary checkbox','type':'checkbox','id':'userinput1'}}) }}
+
+             </td>
+
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+{% endmacro image %}

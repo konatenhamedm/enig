@@ -1,0 +1,128 @@
+{% extends '_admin/_includes/index.html.twig' %}
+
+{% block titre %}{{ menu.getRoute }}{% endblock %}
+
+{% block page_content %}
+
+    {% set new = menu.getRoute %}
+    {#{{ dump(menu.getRoute) }}#}
+    <!-- PAGE-HEADER -->
+    <div class="page-header">
+        <h1 class="page-title">{{ "Acte de constitution" |capitalize }}</h1>
+        <div>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path(new) }}">LISTE DES ACTES DE CONSTITUTION</a></li>{#
+                <li class="breadcrumb-item active" aria-current="page">{{ "NOUVEAU CLIENT" | capitalize }}</li>#}
+            </ol>
+        </div>
+
+    </div>
+    <!-- PAGE-HEADER END -->
+    <!-- Row -->
+    <div class="row row-sm">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="col-md-10">
+                        <h3 class="card-title">{{ titre | capitalize }}</h3>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn btn-secondary bg-secondary-gradient offset-7" {% if new !="admin" %} href="{{ path(new ~ '_new') }}" {% endif%} {% if modal=="modal" %} data-bs-toggle="modal" data-bs-target="#extralargemodal" {% endif %}>
+                            <i class="fe fe-plus"></i>Nouveau
+                        </a>
+                    </div>
+
+                </div>
+                <div class="card-body">
+
+                    <div class="tab-menu-heading">
+                        <div class="tabs-menu">
+                            <!-- Tabs -->
+                            <ul class="nav panel-tabs panel-secondary">
+                                <li><a href="#tab9" class="active" data-bs-toggle="tab"><span><i class="fe fe-user me-1"></i></span>En cours de constitution</a></li>
+                                <li><a href="#tab10" data-bs-toggle="tab" class=""><span><i class="fe fe-calendar me-1"></i></span>Finalisés</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-body tabs-menu-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab9">
+                                <div class="table-responsive">
+                                    <table id="example2" class="table table-bordered text-nowrap border-bottom">
+                                        <thead>
+
+                                        {% include '_admin/_tableau/header.html.twig' with {'tableau':tableau  }%}
+
+                                        </thead>
+                                        <tbody>
+                                        {% for data in pagination %}
+                                            <tr>
+
+                                                <td >
+                                                    {{ data.form.libelle | upper }}
+                                                </td>
+                                                <td >
+                                                    {{ data.denomination | upper }}
+                                                </td>
+                                                <td >
+                                                    {{ data.sigle | upper }}
+                                                </td>
+                                                <td >
+                                                    {{ data.client.getNomPrenoms | upper }}
+                                                </td>
+                                                {% include '_admin/_tableau/action.html.twig' with {'module':new ,'data':data }%}
+
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab10">
+                                <div class="table-responsive">
+                                    <table id="example3" class="table table-bordered text-nowrap border-bottom">
+                                        <thead>
+
+                                        {% include '_admin/_tableau/header.html.twig' with {'tableau':tableau  }%}
+
+                                        </thead>
+                                        <tbody>
+                                        {% for data in finalise %}
+                                            <tr>
+
+                                                <td >
+                                                    {{ data.form.libelle }}
+                                                </td>
+                                                <td >
+                                                    {{ data.denomination }}
+                                                </td>
+                                                <td >
+                                                    {{ data.sigle }}
+                                                </td>
+                                                <td >
+                                                    {{ data.client.getNomPrenoms }}
+                                                </td>
+                                                {% include '_admin/_tableau/action.html.twig' with {'module':new ,'data':data }%}
+
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}
+

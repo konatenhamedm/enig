@@ -1,0 +1,141 @@
+{% block page_content %}
+
+    <div class="modal-header bg-secondary-gradient">
+        <h2 class="modal-title" style="margin-top: -15px;color: white">DETAILS-{{ titre | upper  }}</h2>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <br>
+    {% form_theme form 'widget/fields-block.html.twig' %}
+    {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
+    <div class="modal-body">
+        <div class="row etat">
+            <div class="form-group col-md-1">
+                {{ form_widget(form.etat,{'attr':{'class':'form-control border-primary','type':'hidden','id':'userinput1'}}) }}
+            </div>
+            {# <div class="col-md-6 " style="margin-left: -55px;margin-top: -1px">
+
+                 <span style="font-weight: bolder">Numéro Automatique</span>
+             </div>#}
+
+        </div>
+        <div class="contenu" style="margin-top: -10px">
+
+            <div class="row">
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">FORME</label>
+                    {{ form_widget(form.form,{'attr':{'class':'form-select form-control border-primary','id':'userinput1','placeholder':'FORME','required':'required' }}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="sr-onl" for="userinput1">DENOMINATION</label>
+                    {{ form_widget(form.denomination,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'DENOMINATION' }}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">SIGLE</label>
+                    {{ form_widget(form.sigle,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'SIGLE','required':'required'}}) }}
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">DUREE</label>
+                    {{ form_widget(form.duree,{'attr':{'class':'form-control border-primary ','id':'userinput1','placeholder':'DUREE','required':'required'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">CAPITAL</label>
+                    {{ form_widget(form.capital,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'CAPITAL','required':'required'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">SIEGE</label>
+                    {{ form_widget(form.siege,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'SIEGE','required':'required'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="sr-onl" for="userinput1">CLIENT</label>
+                    {{ form_widget(form.client,{'attr':{'class':'form-select  form-control border-primary','id':'userinput1','placeholder':'CLIENT'}}) }}
+
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="sr-onl" for="userinput1">OBJET</label>
+                    {{ form_widget(form.objet,{'attr':{'class':'form-select form-control border-primary','id':'userinput1','placeholder':'OBJET'}}) }}
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label class="sr-onl" for="userinput1">DEVISE</label>
+                    {{ form_widget(form.devise,{'attr':{'class':'form-select  form-control border-primary','id':'userinput1','placeholder':'DEVISE'}}) }}
+
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="sr-onl" for="userinput1">GERANT</label>
+                    {{ form_widget(form.nomGerant,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'GERANT'}}) }}
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6 sa">
+                    <label class="sr-onl" for="userinput1">LIBERATLISATION A LA SOUSCRIPTION</label>
+                    {{ form_widget(form.liberationSouscription,{'attr':{'class':'form-select form-control border-primary','id':'userinput1','placeholder':'LIBERATLISATION A LA SOUSCRIPTION'}}) }}
+
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="sr-onl" for="userinput1">NATURE DES ACTIONS</label>
+                    {{ form_widget(form.natureAction,{'attr':{'class':'form-select form-control border-primary','id':'userinput1','placeholder':'NATURE DES ACTIONS'}}) }}
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="{{ path('acteConstitution') }}" class="btn btn-secondary">Fermer</a>
+    </div>
+    {{ form_end(form) }}
+
+
+{% endblock %}
+{#{% include 'admin/macros/fichier.html.twig'  %}#}
+
+{% block javascripts %}
+
+    <script src="{{ asset('admin/admin/js/jquery3.1.js') }}"></script>
+
+    <script>
+        $('.groupe').hide()
+        $('.etat').hide()
+        select = document.getElementById('acte_constitution_form');
+        choice = select.selectedIndex  // Récupération de l'index du <option> choisi
+
+        const valeur = select.options[choice].text;
+
+        if(valeur === "SA"){
+            $('.sa').show()
+        }else {
+            $('.sa').hide()
+        }
+        $("#acte_constitution_form").on('change',function () {
+            select = document.getElementById('acte_constitution_form');
+            choice = select.selectedIndex  // Récupération de l'index du <option> choisi
+
+            const valeur = select.options[choice].text;
+            console.log(valeur)
+            if(valeur === "SA"){
+                $('.sa').show()
+            }else {
+                $('.sa').hide()
+            }
+        })
+    </script>
+{% endblock %}

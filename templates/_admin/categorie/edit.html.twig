@@ -1,0 +1,50 @@
+
+{% block page_content %}
+    <div class="modal-header bg-secondary-gradient">
+        <h2 class="modal-title" style="margin-top: -15px;color: white">EDITION-{{ titre | upper  }}
+        </h2>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <hr>
+    {% form_theme form 'bootstrap_5_layout.html.twig' %}
+    {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
+    <div class="modal-body ">
+        {# {{ include('includes/ajax/response.html.twig') }} #}
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label class="sr-onl" for="userinput1">LIBELLE</label>
+                {{ form_widget(form.libelle,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'LIBELLE'}}) }}
+                {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+            </div>
+            <div class="form-group col-md-6">
+                <label class="sr-onl" for="userinput1">STATUS</label>
+                {{ form_widget(form.status,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'STATUS'}}) }}
+                {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="form-group col-md-12">
+                <label class="sr-onl" for="userinput1">IMAGE</label>
+                {{ form_widget(form.image,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'IMAGE'}}) }}
+                {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="form-group col-md-12">
+                <label class="sr-onl" for="userinput1">DESCRIPTION</label>
+                {{ form_widget(form.description,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'DESCRIPTION'}}) }}
+                {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <a href="{{ path('categorie') }}" class="btn btn-secondary">Fermer</a>
+        <button type="submit" class="btn btn-primary">Valider</button>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

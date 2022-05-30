@@ -1,0 +1,108 @@
+
+{% from '_admin/macros/document.html.twig' import image %}
+{% block page_content %}
+
+    <div class="modal-header bg-secondary-gradient">
+        <h2 class="modal-title" style="margin-top: -15px;color: white">NOUVEAU-{{ titre | upper  }}</h2>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <br>
+    {% form_theme form 'widget/fields-block.html.twig' %}
+    {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
+    <div class="modal-body">
+        <div class="contenu" style="margin-top: -10px">
+
+            <div class="row">
+                <div class="form-group col-md-12 ">
+                    <label class="sr-onl" for="userinput1">Libelle</label>
+                    {{ form_widget(form.libelle,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Libelle','required':'required' }}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="form-group col-md-12">
+                    <label class="sr-onl" for="userinput1">Sigle</label>
+                    {{ form_widget(form.sigle,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Sigle' }}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+
+            </div>
+
+        </div>
+        <span class="col-lg-12 groupe" id="groupe" data-prototype="{{ image(form.documents.vars.prototype)|e('html_attr') }}">
+
+            {#   <div class="row" >#}
+
+            {#   <div class="col-md-1">#}
+            {#  <button type="button" class="waves-effect waves-light btn btn-primary  add_intervention" >
+                  <i class="fa fa-plus-circle"></i></button>#}
+
+            {#   </div>#}
+
+            {# </div>
+             <br>#}
+              <h4>ARCHIVAGE DES DOCUMENTS</h4>
+            <div class="col-md-12">
+                <a href="#" class="btn btn-secondary add_groupe" style="margin-left: -20px" data-card-tool="remove"
+                   data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove Card">Ajouter un
+                    fichier </a>
+            </div>
+            {% for row in form.documents %}
+                <span >
+                    {{ image(row|e) }}
+
+                </span>
+
+            {% endfor %}
+ <span class="after"> </span>
+        </span>
+
+
+    </div>
+    <div class="modal-footer">
+        <a href="{{ path('acte') }}" class="btn btn-secondary">Fermer</a>
+       {# <button class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>#}
+        <button class="btn btn-primary">Valider</button>
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}
+{#{% include 'admin/macros/fichier.html.twig'  %}#}
+
+{% block javascripts %}
+
+    <script src="{{ asset('admin/admin/js/jquery3.1.js') }}"></script>
+    <script src="{{ asset('admin/admin/js/groupe.js') }}"></script>
+
+    <script>
+$(".after").hide()
+/*
+
+            $('#acte_typeActe').on('change',function (e) {
+                select = document.getElementById('acte_typeActe');
+                choice = select.selectedIndex  // Récupération de l'index du <option> choisi
+
+                const valeur = select.options[choice].text;
+
+
+                console.log(e)
+                if(value !== "VENTE"){
+
+                    $('.vente').hide()
+                    }else {
+                    $('.vente').show()
+                }
+
+
+
+            })
+*/
+
+
+
+    </script>
+{% endblock %}

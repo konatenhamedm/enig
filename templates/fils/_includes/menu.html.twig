@@ -1,0 +1,197 @@
+<header>
+    {#<div class="header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <!--HEADER-TOP-MENU LEFT START-->
+                    <div class="header-top-menu">
+                        <nav>
+                            <ul>
+                                <li><a href="#"><img src="img/flag.png" alt="" /><span><i
+                                                    class="fa fa-angle-down"></i></span></a>
+                                    <ul class="sup-menu">
+                                        <li><a href="#"><img src="img/country/it.gif" alt="" />italiano</a></li>
+                                        <li><a href="#"><img src="img/country/nl_nl.gif" alt="" />Nederlands</a>
+                                        </li>
+                                        <li><a href="#"><img src="img/country/de_de.gif" alt="" />Deutsch</a></li>
+                                        <li><a href="#"><img src="img/country/he_il.gif" alt="" /> עברית</a></li>
+                                        <li><a href="#"><img src="img/country/en.gif" alt="" />English</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><i class="fa fa-usd"></i><span><i
+                                                    class="fa fa-angle-down"></i></span></a>
+                                    <ul class="sup-menu currency">
+                                        <li><a href="#"><i class="fa fa-eur"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-rub"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-krw"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-gbp"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-inr"></i></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><i class="fa fa-user"></i><span><i
+                                                    class="fa fa-angle-down"></i></span></a>
+                                    <ul class="sup-menu">
+                                        <li><a href="#">Profile</a></li>
+                                        <li><a href="#">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!--HEADER-TOP-MENU-LEFT END-->
+                </div>
+                <div class="col-md-9">
+                    <!--HEADER-TOP-MENU-RIGHT START-->
+                    <div class="header-top-right">
+                        <div class="heder-right-menu">
+                            <nav>
+                                <ul>
+                                    <li><a href="javascript:void(0)"><span><i
+                                                        class="fa fa-align-justify"></i></span>All
+                                            Category <span class="dropdown"><i
+                                                        class="fa fa-angle-down"></i></span></a>
+                                        <ul>
+                                            <li><a href="category_grid.html">Mens</a></li>
+                                            <li><a href="category_grid.html">Womens</a></li>
+                                            <li><a href="category_grid.html">Bag</a></li>
+                                            <li><a href="category_grid.html">Digital Camera</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="form-and-cart">
+                            <form action="#">
+                                <input type="text" placeholder="Search..." />
+                                <span class="search-button"><i class="fa fa-search"></i></span>
+                            </form>
+                            <div class="cart-empty shopping_cart">
+                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                <!-- CART-PRODUCT-LIST START-->
+                                <div class="cart-product-list">
+                                    <div class="mini-cart-content">
+                                        <div class="cart-img-details">
+                                            <div class="cart-img-photo">
+                                                <a href="#"><img src="img/cart_list_prod.jpg" alt="" /></a>
+                                                <span class="quantity">1</span>
+                                            </div>
+                                            <div class="cart-img-contaent">
+                                                <a href="#">
+                                                    <h4>Vestibulum et mollis nunc</h4>
+                                                </a>
+                                                <span>$120.00</span>
+                                            </div>
+                                            <div class="pro-del"><a href="#"><i class="fa fa-times-circle"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div class="cart-img-details">
+                                            <div class="cart-img-photo">
+                                                <a href="#"><img src="img/cart_list_prod_2.jpg" alt="" /></a>
+                                                <span class="quantity">1</span>
+                                            </div>
+                                            <div class="cart-img-contaent">
+                                                <a href="#">
+                                                    <h4>Aenean eu tristique</h4>
+                                                </a>
+                                                <span>$170.00</span>
+                                            </div>
+                                            <div class="pro-del"><a href="#"><i class="fa fa-times-circle"></i></a>
+                                            </div>
+                                        </div>
+                                        <p class="total">Subtotal: <span class="amount">$290.00</span></p>
+                                        <div class="clear"></div>
+                                        <p class="cart-button-top"><a href="checkout.html">Checkout</a></p>
+                                    </div>
+                                </div>
+                                <!-- CART-PRODUCT-LIST END-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--HEADER-TOP-MENU-RIGHT END-->
+                </div>
+            </div>
+        </div>
+    </div>#}
+    <!--HEADER AREA TOP END-->
+
+    <!--MAINMENU AREA START-->
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="main-menu">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <!--LOGO AREA START-->
+                                <div class="logo">
+                                    <a href="{{ path('home') }}"><img src=" {{ asset('fils/image_inig/logo1.png') }}" alt="" /></a>
+                                </div>
+                                <!--LOGO AREA END-->
+                            </div>
+                            <div class="col-md-8">
+                                <!--MAINMENU START-->
+                                <div class="mainmenu">
+                                    <nav>
+                                        <ul id="nav">
+                                            <li class="current"><a href="{{ path('home') }}"><span><i
+                                                                class="fa fa-home"></i></span>Home <i
+                                                            class="fa fa-arrow-circle-o-right"></i></a>
+                                            </li>
+                                            <li><a href="{{ path('about') }}"><span><i class="fa fa-briefcase"></i></span>A porpos</a>
+                                            </li>
+                                            <li><a href="#"><span><i
+                                                                class="fa fa-pencil-square-o"></i></span>Catégories <i
+                                                            class="fa fa-arrow-circle-o-right"></i></a>
+                                                <ul class="sub-menu">
+
+                                                    {% for c in menu.listeCategorie %}
+                                                        <li><a href="{{ path('affiche_produits',{'id': c.id }) }}">{{ c.libelle }}</a></li>
+                                                    {% endfor %}
+
+                                                </ul>
+                                            </li>
+                                            <li><a href="{{ path('contact') }}"><span><i
+                                                                class="fa fa-envelope"></i></span>Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!--MAINMENU END-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- MOBILE-MENU START-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mobile-menu">
+                            <ul id="mobile-menu">
+                                <li class="current"><a href="{{ path('home') }}"><span><i
+                                                    class="fa fa-home"></i></span>Home <i
+                                                class="fa fa-arrow-circle-o-right"></i></a>
+                                </li>
+                                <li><a href="{{ path('about') }}"><span><i class="fa fa-briefcase"></i></span>A porpos</a>
+                                </li>
+                                <li><a href="#"><span><i
+                                                    class="fa fa-pencil-square-o"></i></span>Catégories <i
+                                                class="fa fa-arrow-circle-o-right"></i></a>
+                                    <ul class="sub-menu">
+
+                                        {% for c in menu.listeCategorie %}
+                                            <li><a href="{{ path('affiche_produits',{'id': c.id }) }}">{{ c.libelle }}</a></li>
+                                        {% endfor %}
+
+                                    </ul>
+                                </li>
+                                <li><a href="{{ path('contact') }}"><span><i
+                                                    class="fa fa-envelope"></i></span>Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- MOBILE-MENU END-->
+            </div>
+        </div>
+    </div>
+    <!--MAINMENU AREA END-->
+</header>

@@ -1,0 +1,22 @@
+{% macro image(image) %}
+
+    <span class="row" style="margin:0 0 0 !important;">
+        <div class="col-11 ">
+           {# <label class="sr-onl" for="userinput1"> <h3>Nom du document</h3></label>#}
+            {{ form_row(image.libelle,{'attr':{'class':'form-control','id':'userinput16','placeholder':'Nom du document'}}) }}
+        </div>
+       {# <div class="col-4 ">
+           #}{# <label class="sr-onl" for="userinput1"> <h3>Date d'obtention</h3></label>#}{#
+            {{ form_row(image.dateObtention,{'attr':{'class':'form-control ','id':'userinput16','placeholder':'Date obtention'}}) }}
+        </div>
+        <div class="col-3 ">
+          #}{#  <label class="sr-onl" for="userinput1"> <h3>Le fichier join</h3></label>#}{#
+            {{ form_row(image.path,{'attr':{'class':'form-control ','id':'userinput16','placeholder':'Le fichier join'}}) }}
+        </div>#}
+       <div class="col-1  supprimer">
+
+        </div>
+
+    </span>
+
+{% endmacro image %}

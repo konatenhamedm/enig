@@ -1,0 +1,56 @@
+{% extends 'fils/_includes/index.html.twig' %}
+
+{% block page_content %}
+
+{% block contenu %}
+    <div class="maincontain-area">
+        <div class="container">
+            <!-- MAP_COMMENT_AREA START-->
+            <div class="map_comment_area">
+                <div class="row">
+                    <!-- MAP START-->
+                    <div class="col-lg-6">
+                        <div class="contact-map">
+                            <div class="mapouter">
+                                <div class="gmap_canvas">
+                                    <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=121%20King%20St%2C%20Melbourne%20VIC%203000%2C%20Australia&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
+                                    <a href="https://sites.google.com/view/maps-api-v2/mapv2"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MAP END-->
+                    <!-- COMMENT_FORM START-->
+                    <div class="col-lg-6">
+                        <h2 class="heading_comments">Laisser un commentaire</h2>
+                        <div class="comment_form">
+                            <form id="contact-form" action="https://whizthemes.com/nazmul/php/mail.php" method="post">
+                                <p>
+                                    <label>Votre nom(*)</label>
+                                    <input type="text" name="name" placeholder="">
+                                </p>
+                                <p>
+                                    <label>Votre addresse email(*)</label>
+                                    <input type="text" name="email" placeholder="">
+                                </p>
+                                <p>
+                                    <label>Votre message(*)</label>
+                                    <input name="subject" placeholder="" type="text">
+                                </p>
+                                <p><textarea class="custom-textarea" name="message" placeholder=""></textarea></p>
+                                <div class="button_for_text">
+                                    <button type="submit">Soumettre</button>
+                                </div>
+                            </form>
+                            <p class="form-messege"></p>
+                        </div>
+                    </div>
+                    <!-- COMMENT_FORM END-->
+                </div>
+            </div>
+            <!-- MAP_COMMENT_AREA END-->
+        </div>
+    </div>
+    {% endblock %}
+{% endblock %}
+

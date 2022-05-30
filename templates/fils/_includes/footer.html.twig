@@ -1,0 +1,146 @@
+<!-- FOOTER-AREA START-->
+<div class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="footer">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <!-- FOOTER-LOGO START-->
+                            <div class="footer-logo">
+                                <a href="index.html"><img alt="" src="{{ asset('fils/image_inig/logo1.png') }}"></a>
+                                <p>Nous Distribuons Les Produits Des Marques Les Plus Fiables Du Marché. </p>
+                            </div>
+                            <!-- FOOTER-LOGO END-->
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <!-- INFORMATION START-->
+                            <div class="information">
+                                <h3>Infomations</h3>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span><i class="fa fa-arrow-circle-o-right"></i></span>
+                                            A propos
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span><i class="fa fa-arrow-circle-o-right"></i></span>
+                                            Catégorie
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span><i class="fa fa-arrow-circle-o-right"></i></span>
+                                            Conatct
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <!-- INFORMATION END-->
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <!-- MYACCOUNT START-->
+                            <div class="myaccount">
+                                <h3>Catégories</h3>
+                                <ul>
+                                    {% for c in menu.listeCategorie %}
+                                    <li>
+                                        <a href="{{ path('affiche_produits',{'id': c.id }) }}">
+                                            <span><i class="fa fa-arrow-circle-o-right"></i></span>
+                                            {{ c.libelle }}
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <!-- MYACCOUNT END-->
+                        </div>
+
+                        <!-- JOIN-US AREA START-->
+                        <div class="col-lg-3 col-md-6  mb-30px">
+                            <div class="join-us">
+
+
+                                <h3>Rejoignez-nous</h3>
+                                <span>Suivez-nous maintenant!</span>
+                            </div>
+                            <div class="social-icon">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- JOIN-US AREA END-->
+                    </div>
+                    <!-- ROW END-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FOOTER-AREA START-->
+<div class="footer-bottum-menu-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="footer-bottum">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- FOOTER-BOTTUM-MENU START-->
+                            <div class="footer-bottum-menu">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span><i class="fa fa-arrow-circle-o-right"></i></span>
+                                            A propos
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span><i class="fa fa-arrow-circle-o-right"></i></span>
+                                            Catégorie
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('contact') }}">
+                                            <span><i class="fa fa-arrow-circle-o-right"></i></span>
+                                            Conatct
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- FOOTER-BOTTUM-MENU END-->
+                        </div>
+                        <div class="col-lg-6">
+                            <!-- CARD-AREA START-->
+                            <div class="card-area">
+                                <a href="#"><img src="img/paypal.png" alt="" /></a>
+                                <a href="#"><img src="img/amazon.png" alt="" /></a>
+                                <a href="#"><img src="img/skrill.png" alt="" /></a>
+                                <a href="#"><img src="img/visa.png" alt="" /></a>
+                                <a href="#"><img src="img/discover.png" alt="" /></a>
+                                <a href="#"><img src="img/master.png" alt="" /></a>
+                            </div>
+                            <!-- CARD-AREA END-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- COPY-RIGHT START-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="copy-right">
+                <p>Copyright &copy; 2022 <a href="https://isofth.com/">KNH</a>. ENIG SARL Tous les droits réservés.</p>
+            </div>
+        </div>
+    </div>
+</div>

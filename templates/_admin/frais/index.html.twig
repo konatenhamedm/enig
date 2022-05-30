@@ -1,0 +1,64 @@
+{% extends '_admin/_includes/index.html.twig' %}
+
+{% block titre %}Notari | Frais{% endblock %}
+
+{% block style %}
+    <link href="{{ asset('assets/HoldOn.min.css') }}" rel="stylesheet">
+{% endblock %}
+{% block page_content %}
+    <div class="page-header">
+        <h1 class="page-title">{{ "Frais par type d'acte" |capitalize }}</h1>
+        <div>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Frais par type d'acte</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ "Frais par type d'acte" | capitalize }}</li>
+            </ol>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Frais par type d'acte</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {# <div class="col-md-12 col-xl-3">
+                             <div id="external-events">
+                                 <h4>Les événements</h4>
+                                 <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event bg-primary">
+                                     <div class="fc-event-main">My Event 1</div>
+                                 </div>
+                                 <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event bg-secondary" data-class="bg-secondary">
+                                     <div class="fc-event-main">My Event 2</div>
+                                 </div>
+                                 <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event bg-warning" data-class="bg-warning">
+                                     <div class="fc-event-main">My Event 3</div>
+                                 </div>
+                                 <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event bg-success" data-class=" bg-info">
+                                     <div class="fc-event-main">My Event 4</div>
+                                 </div>
+                                 <div class="fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event bg-danger" data-class="bg-danger">
+                                     <div class="fc-event-main">My Event 5</div>
+                                 </div>
+                             </div>
+
+                         </div>
+                         <div class="col-md-12  col-xl-9">
+                             #}{# <div id='calendar2'></div>#}{#
+                             <div id="calendrier">
+
+                             </div>
+                         </div>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+

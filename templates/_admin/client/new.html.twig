@@ -1,0 +1,574 @@
+{% extends '_admin/_includes/index.html.twig' %}
+
+{% block titre %}EDITION{% endblock %}
+
+{% block page_content %}
+    {% set new = menu.getRoute %}
+    <div class="page-header">
+        <h1 class="page-title">{{ "Client" |capitalize }}</h1>
+        <div>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('client') }}">LISTE DES CLIENTS </a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ "NOUVEAU CLIENT" | capitalize }}</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">NOUVEAU-CLIENT</h3>
+        </div>
+        <div class="card-body">
+            {% form_theme form 'bootstrap_5_layout.html.twig' %}
+            {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
+           {# <div class="row">
+                <div class="col-md-6 mt-2">
+                    <div class="toast align-items-center text-white bg-danger border-0 show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+                        <div class="d-flex">
+                            <div class="toast-body">
+                                S'il vous veillez selectionnez un  type client
+                            </div>
+                            <button aria-label="Close" class="btn-close fs-20 ms-auto mt-2 pe-2" data-bs-dismiss="toast"><span aria-hidden="true">×</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>#}
+
+            <div class="row">
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">Type de client</label>
+                    {{ form_widget(form.type_client,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Veillez selectionner un type','required':'required'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+            </div>
+            {#DEbut physique#}
+        <div class="physique">
+            <div class="row">
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">NOM</label>
+                    {{ form_widget(form.nom,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'NOM'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">PRENOMS</label>
+                    {{ form_widget(form.prenom,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'PRENOMS'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">PHOTO</label>
+                    {{ form_widget(form.photo,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'PHOTO'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput2">DATE DE NAISSANCE</label>
+                    {{ form_widget(form.dateNaissance,{'attr':{'class':'form-control border-primary','id':'userinput2','placeholder':'DATE DE NAISSANCE'}}) }}
+                </div>
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">LIEU DE NAISSANCE </label>
+                    {{ form_widget(form.lieuNaissance,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'LIEU DE NAISSANCE'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput2">PROFESSION</label>
+                    {{ form_widget(form.profession,{'attr':{'class':'form-control border-primary','id':'userinput2','placeholder':'PROFESSION '}}) }}
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">DOMICILE</label>
+                    {{ form_widget(form.domicile,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'DOMICILE'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">PERE</label>
+                    {{ form_widget(form.pere,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'PERE'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">MERE</label>
+                    {{ form_widget(form.mere,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'MERE'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+            </div>
+            <div class="row">
+               {# <div class="form-group col-md-6 ">
+                    <label class="sr-onl" for="userinput1">ETAT BIEN</label>
+                    {{ form_widget(form.etatBienVendu,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Le bien vendu constitue-t-il le domicile de la famille?'}}) }}
+                    #}{# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}{#
+                </div>#}
+                <div class="form-group col-md-6 ">
+                    <label class="sr-onl" for="userinput1">ADRESSE</label>
+                    {{ form_widget(form.adresse,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'ADRESSE'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label class="sr-onl" for="userinput1">TELEPHONE DOMICILE</label>
+                    {{ form_widget(form.telDomicile,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'TELEPHONE DOMICILENUMERO CARTE D’ELECTEUR '}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+
+            </div>
+
+            <div class="row moral_sub">
+
+                <div class="form-group col-md-6 ">
+                    <label class="sr-onl" for="userinput2">TELEPHONE BUREAU</label>
+                    {{ form_widget(form.telBureau,{'attr':{'class':'form-control border-primary','id':'userinput2','placeholder':'TELEPHONE BUREAU'}}) }}
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label class="sr-onl" for="userinput1">TELEPHONE PORTABLE</label>
+                    {{ form_widget(form.telPortable,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'TELEPHONE PORTABLE'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">EMAIL</label>
+                    {{ form_widget(form.email,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'EMAIL'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">NATIONALITE</label>
+                    {{ form_widget(form.nationalite,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'NATIONALITE'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">SITUATION</label>
+                    {{ form_widget(form.situation,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'SITUATION'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+            </div>
+            <div class="">
+                <div class="row situation" >
+
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">NOM DU CONJOINT</label>
+                        {{ form_widget(form.nomConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'NOM DU CONJOINT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">PRENOMS DU CONJOINT</label>
+                        {{ form_widget(form.prenomConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'PRENOMS DU CONJOINT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                </div>
+                <div class="row situation">
+
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">DATE NAISSANCE DU CONJOINT</label>
+                        {{ form_widget(form.dateNaissanceConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'DATE NAISSANCE DU CONJOINT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">PRENOMS DU CONJOINT</label>
+                        {{ form_widget(form.lieuNaissanceConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'PRENOMS DU CONJOINT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                </div>
+                <div class="row situation">
+
+                    <div class="form-group col-md-4 ">
+                        <label class="sr-onl" for="userinput1">PROFESSION DU CONJOINT</label>
+                        {{ form_widget(form.professionConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'PROFESSION DU CONJOINT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+                    <div class="form-group col-md-4 ">
+                        <label class="sr-onl" for="userinput1">PERE DU CONJOINT</label>
+                        {{ form_widget(form.pereConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'PERE DU CONJOINT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                    <div class="form-group col-md-4 ">
+                        <label class="sr-onl" for="userinput1">MERE DU CONJOINT</label>
+                        {{ form_widget(form.mereConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'MERE DU CONJOINT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                </div>
+                <div class="row situation">
+
+                    <div class="form-group col-md-4 ">
+                        <label class="sr-onl" for="userinput1">ADRESSE DU CONJOINT</label>
+                        {{ form_widget(form.adresseConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'ADRESSE DU CONJOINT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+                    <div class="form-group col-md-4 ">
+                        <label class="sr-onl" for="userinput1">TELEPHONE DU CONJOINT</label>
+                        {{ form_widget(form.telConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'TELEPHONE DU CONJOINT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                    <div class="form-group col-md-4 ">
+                        <label class="sr-onl" for="userinput1">PORTABLE DU CONJOINT</label>
+                        {{ form_widget(form.portableConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'PORTABLE DU CONJOINT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                </div>
+                <div class="row situation">
+
+                    <div class="form-group col-md-4 ">
+                        <label class="sr-onl" for="userinput1">ADRESSE MAIL DU CONJOINT</label>
+                        {{ form_widget(form.emailConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'ADRESSE MAIL DU CONJOINT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+                    <div class="form-group col-md-4 ">
+                        <label class="sr-onl" for="userinput1">NATIONALITE DU CONJOINT</label>
+                        {{ form_widget(form.nationaliteConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'NATIONALITE DU CONJOINT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                    <div class="form-group col-md-4 ">
+                        <label class="sr-onl" for="userinput1">REGIME MATRIMONIAL DU CONJOINT</label>
+                        {{ form_widget(form.regimeMatrimonialConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'REGIME MATRIMONIAL DU CONJOINT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                </div>
+                <div class="row situation">
+
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">DATE MARIAGE DU CONJOINT</label>
+                        {{ form_widget(form.dateMariage,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'VOTRE PREOCCUPATION'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">LIEU MARIAGE DU CONJOINT</label>
+                        {{ form_widget(form.lieuMariageConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'LIEU MARIAGE DU CONJOINT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                </div>
+                <div class="row situation ">
+
+                    <div class="form-group col-md-6">
+                        <label class="sr-onl" for="userinput1">Y-A-T-IL EU CONTRAT DE MARIAGE</label>
+                        {{ form_widget(form.contratMariageConjoint,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Y-A-T-IL EU CONTRAT DE MARIAGE'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+                    <div class="form-group col-md-6 affirmatif">
+                        <label class="sr-onl" for="userinput1">LE COMMUNIQUE</label>
+                        {{ form_widget(form.affirmatif,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'LE COMMUNIQUE'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                </div>
+
+                <div class="row precedent-mariage">
+
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">Y-A-T-IL EU UN PRECEDENT MARIAGE</label>
+                        {{ form_widget(form.precedentMariage,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Y-A-T-IL EU UN PRECEDENT MARIAGE'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                    <div class="form-group col-md-6 etat">
+                        <label class="sr-onl" for="userinput1">CHOIX DE LA SITUATION</label>
+                        {{ form_widget(form.etat,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Y-A-T-IL EU UN PRECEDENT MARIAGE'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                </div>
+
+                <div class="row precedent-mariage-oblige">
+                    <div class="form-group col-md-4 nomPrenomEpoux">
+                        <label class="sr-onl" for="userinput1">NOM ET PRENOMS DE L'EPOUX (SE)</label>
+                        {{ form_widget(form.nomPrenomEpoux,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'NOM ET PRENOMS DE L EPOUX (SE)'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                    <div class="form-group col-md-4 datePrecedent">
+                        <label class="sr-onl" for="userinput1">DATE DU PRECEDENT MARIAGE</label>
+                        {{ form_widget(form.datePrecedent,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'DATE DU PRECEDENT MARIAGE'}}) }}
+
+                    </div>
+                    <div class="form-group col-md-4 regime">
+                        <label class="sr-onl" for="userinput1">REGIME MATRIMONIAL PRECEDENT MARIAGE</label>
+                        {{ form_widget(form.regime,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'REGIME MATRIMONIAL PRECEDENT MARIAGE'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                </div>
+
+                <div class="row divorce situation">
+
+                    <div class="form-group col-md-4 ">
+                        <label class="sr-onl" for="userinput1">NUMERO JUGEMENT</label>
+                        {{ form_widget(form.numeroJugement,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'NUMERO JUGEMENT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+                    <div class="form-group col-md-4 ">
+                        <label class="sr-onl" for="userinput1">DATE JUGEMENT</label>
+                        {{ form_widget(form.dateJugement,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'DATE JUGEMENT'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                    <div class="form-group col-md-4 ">
+                        <label class="sr-onl" for="userinput1">JUGEMENT RENDU</label>
+                        {{ form_widget(form.jugementRendu,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'JUGEMENT RENDU'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+                </div>
+                <div class="row deces situation">
+
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">DATE DECES</label>
+                        {{ form_widget(form.dateDeces,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'DATE DECES'}}) }}
+                        {# <input type="text" id="userinput1" class="fodateDecesrm-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">LIEU DU DECES</label>
+                        {{ form_widget(form.lieuDeces,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'LIEU DU DECES'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+            <div class="moral">
+                <div class="row">
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">RAISON SOCIALE</label>
+                        {{ form_widget(form.raisonSocial,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'RAISON SOCIALE'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">REGISTRE DE COMMERCE</label>
+                        {{ form_widget(form.registreCommercial,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'REGISTRE DE COMMERCE'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">BOITE POSTALE</label>
+                        {{ form_widget(form.boitePostal,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'BOITE POSTALE'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+                    <div class="form-group col-md-6 ">
+                        <label class="sr-onl" for="userinput1">SITE WEB</label>
+                        {{ form_widget(form.siteWeb,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'SITE WEB'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12 ">
+                        <label class="sr-onl" for="userinput1">LOCALISATION</label>
+                        {{ form_widget(form.local,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'LOCALISATION'}}) }}
+                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="card-footer text-end">
+            <a href="{{ path('client') }}" class="btn btn-danger my-1">Annuler</a>
+            <button type="submit" class="btn btn-success my-1">Valider</button>
+        </div>
+
+    </div>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}
+   {% block javascripts %}
+       <script src="{{ asset('admin/admin/js/jquery3.1.js') }}"></script>
+       <script>
+
+           $(function() {
+               $('#client_nom ').keyup(function() {
+                   this.value = this.value.toLocaleUpperCase();
+               });
+               $('#client_raisonSocial ').keyup(function() {
+                   this.value = this.value.toLocaleUpperCase();
+               });
+           });
+
+           function enMajuscule(str)
+           {
+               return str.split(/\s+/).map(s => s.charAt(0).toUpperCase() + s.substring(1).toLowerCase()).join(" ");
+           }
+
+           $('#client_prenom').on('keyup', function(event) {
+               var $prenom = $(this);
+               $prenom.val(enMajuscule($prenom.val()));
+           });
+
+           $(document).ready(function () {
+               $('.bt').on('click',function () {
+                   $.ajax({
+                       url: '/client/new',
+                       type: 'get',
+                       dataType: 'json',
+                       success: function (response, status) {
+
+                           console.log(response);
+                       },
+                       error: function (error) {
+                           console.log(error);
+                       }
+                   });
+               })
+               $('.moral').hide()
+               $('#client_type_client').on('change',function () {
+
+                    select = document.getElementById('client_type_client');
+                    choice = select.selectedIndex  // Récupération de l'index du <option> choisi
+
+                   const valeur = select.options[choice].text;
+
+
+                   if(valeur !== "Particulier"){
+
+                       $('.moral').show()
+                       $('.moral_sub').show()
+                       $('.physique').hide()
+                   }else {
+                       $('.moral').hide()
+                       $('.physique').show()
+                   }
+               })
+
+               const value = $('#clien_situation').val();
+               const precedent = $('#client_precedentMariage').val();
+               $('.etat').hide();
+               $('.precedent-mariage-oblige').hide();
+               console.log(precedent)
+               if (precedent === "NON"){
+
+                   $('.precedent-mariage-oblige').hide();
+                   /* $('.deces').hide();
+                    $('.divorce').hide();*/
+                   $('#client_etat').hide();
+               }
+               if (precedent === "OUI"){
+                   $('.precedent-mariage-oblige').show();
+                   $('.etat').show();
+
+
+                   /*$('.datePrecedent').show();
+                   $('.regime').show();*/
+               }
+               if (value !== "CELIBATAIRE"){
+                   //  $('.precedent-mariage').hide()
+
+                   if (value === "VEUF"){
+                       $('.deces').show();
+
+                   }else{
+                       $('.deces').hide();
+                   }
+
+                   if (value === "DIVORCE"){
+                       $('.divorce').show();
+
+                   }else{
+                       $('.divorce').hide();
+                   }
+
+                   $('.situation').show();
+               }else{
+                   $("#client_precedentMariage").show()
+                   $('.situation').hide();
+               }
+
+               $('.situation').hide();
+
+               $("#client_precedentMariage").on('change',function (e) {
+                   var precedent = $(this).val();
+                   console.log(precedent)
+                   if (precedent === "NON"){
+
+                       $('.precedent-mariage-oblige').hide();
+                       $('.deces').hide();
+                       $('.divorce').hide();
+                       $('.etat').hide();
+                   }else {
+                       $('.precedent-mariage-oblige').show();
+                       $('.etat').show();
+
+                       $('.divorce').show();
+                       /*$('.datePrecedent').show();
+                       $('.regime').show();*/
+                   }
+               })
+
+               $("#client_etat").on('change',function (e) {
+                   var precedent = $(this).val();
+                   console.log(precedent)
+                   if (precedent === "DIVORCE"){
+
+
+                       $('.deces').hide();
+                       $('.divorce').show();
+
+                   }else {
+
+                       $('.deces').show();
+                       $('.divorce').hide();
+
+                       /*$('.datePrecedent').show();
+                       $('.regime').show();*/
+                   }
+               })
+
+
+               $("#client_contratMariageConjoint").on('change',function (e) {
+                   var precedent = $(this).val();
+                   console.log(precedent)
+                   if (precedent === "NON"){
+
+                       $('.affirmatif').hide();
+
+                   }else {
+                       $('.affirmatif').show();
+
+                   }
+               })
+               $('#client_situation').on('change',function (e) {
+                   var value = $(this).val();
+                   console.log(value)
+
+
+                   if (value !== "CELIBATAIRE"){
+                       //  $('.precedent-mariage').hide()
+
+                       if (value === "VEUF"){
+                           $('.deces').show();
+
+                       }else{
+                           $('.deces').hide();
+                       }
+
+                       if (value === "DIVORCE"){
+                           $('.divorce').show();
+
+                       }else{
+                           $('.divorce').hide();
+                       }
+
+                       $('.situation').show();
+                   }else{
+                       $("#client_precedentMariage").show()
+                       $('.situation').hide();
+                   }
+               });
+
+           })
+           // $('select').select2();
+       </script>
+   {% endblock %}

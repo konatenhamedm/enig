@@ -1,0 +1,50 @@
+{% set action = module %}
+{% set data = data %}
+{#{{ dump(action) }}#}
+<td width="100" class="action">
+
+
+    <a title="Détails" class="btn  btn-sm btn-primary" href="{{ path( action ~ '_show',{'id':data.id}) }}" {% if modal=="modal" %} data-bs-toggle="modal" data-bs-target="#editUserModal" {% endif %}>
+        <i class="fe fe-eye"></i>
+    </a>
+    <a title="Editer" class="btn  btn-sm btn-secondary" href="{{ path( action ~ '_edit',{'id':data.id}) }}" {% if modal=="modal" %} data-bs-toggle="modal" data-bs-target="#editUserModal" {% endif %}>
+        <i class="fe fe-edit"></i>
+    </a>
+
+    <a title="{% if data.active == 1 %} Supprimer {% else %} Restaurer{% endif %}" href="{{ path( action ~ '_active',{'id':data.id}) }}" class="{% if data.active == 1 %} btn  btn-sm btn-danger {% else %} btn  btn-sm btn-success {% endif %}  activer">
+        {#{{ dump(data.active) }}#}
+        {% if data.active == 1 %}
+
+            <i class="fe fe-trash-2"><span class="path1"></span><span class="path2"></span></i>
+        {% else %}
+
+            <i class="fe fe-clock"><span class="path1"></span><span class="path2"></span></i>
+        {% endif %}
+    </a>
+    {% if action == "acte" or action == "courierDepart" or action == "courierInterne" or action == "courierArrive"  %}
+        <a title="Archive" class="btn  btn-sm btn-dark" href="{{ path( action ~ '_archive',{'id':data.id}) }}" {% if modal=="modal" %} data-bs-toggle="modal" data-bs-target="#editUserModal" {% endif %}>
+            <i class="fe fe-file"></i>
+        </a>
+    {% endif %}
+    {% if action == "acteConstitution" %}
+        <a title="Suivi document" class="btn  btn-sm btn-dark" href="{{ path( action ~ '_archive',{'id':data.id}) }}" {% if modal=="modal" %} data-bs-toggle="modal" data-bs-target="#editUserModal" {% endif %}>
+            <i class="fe fe-book"></i>
+        </a>
+    {% endif %}
+    {% if (action == "courierDepart") and data.etat == false %}
+
+            <a title="Accuse de reception" class="btn  btn-sm btn-secondary-gradient" href="{{ path('courierDepart_recep',{'id':data.id}) }}" {% if modal=="modal" %} data-bs-toggle="modal" data-bs-target="#editUserModal" {% endif %}>
+                <i class="fe fe-mail"></i>
+            </a>
+
+    {% endif %}
+
+    {% if (action == "courierInterne") and data.etat == false %}
+
+        <a title="Accuse de reception" class="btn  btn-sm btn-secondary-gradient" href="{{ path('courierInterne_recep',{'id':data.id}) }}" {% if modal=="modal" %} data-bs-toggle="modal" data-bs-target="#editUserModal" {% endif %}>
+            <i class="fe fe-mail"></i>
+        </a>
+
+    {% endif %}
+</td>
+

@@ -1,0 +1,47 @@
+
+{% block page_content %}
+
+    <div class="modal-header bg-secondary-gradient">
+        <h2 class="modal-title" style="margin-top: -15px;color: white">ARCHIVE-{{ titre | upper  }}</h2>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <br>
+
+
+    <div class="modal-body">
+      {#  {{ dump(data) }}#}
+        {% for fichier in data %}
+       <div class="row">
+           <div class="col-md-8">
+               <div class="form-group">
+
+                   <input class="form-control titre" type="text" value="{{ fichier.titre | upper}}">
+               </div>
+           </div>
+           <div class="col-md-4">
+               <a class="btn btn-primary-gradient" target="_blank" href="{{ asset('uploads/images/' ~ fichier.path) }}" download> <i class="tio-download"></i><i class="fe fe-download"></i>
+                   <span style="font-weight: bolder;color: white">Télecharger</span></a>
+           </div>
+       </div>
+{% endfor %}
+    </div>
+    <div class="modal-footer">
+        <a href="{{ path('acte') }}" class="btn btn-secondary">Fermer</a>
+        {# <button class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>#}
+
+    </div>
+
+
+
+{% endblock %}
+{#{% include 'admin/macros/fichier.html.twig'  %}#}
+
+{% block javascripts %}
+
+
+    <script>
+        $('.titre').attr('readonly', true)
+       </script>
+{% endblock %}

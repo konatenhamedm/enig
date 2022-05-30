@@ -1,0 +1,171 @@
+{#
+{% extends '_admin/_includes/index.html.twig' %}
+#}
+
+{% form_theme form _self %}
+   {% block style %}
+       <style>
+           .checkbox {
+               height: 20px;
+               margin-left: -23px
+           }
+       </style>
+   {% endblock %}
+{% from '_admin/macros/fichier-acte.html.twig' import image %}
+{% block page_content %}
+    {% set new = "acte" %}
+    {% set modal = "modal" %}
+    <div class="modal-header bg-secondary-gradient">
+        <h2 class="modal-title" style="margin-top: -15px;color: white">NOUVEAU-{{ titre | upper  }}</h2>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
+    <div class="modal-body">
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="sr-onl" for="userinput1">SELECTIONNER LE TYPE DE L'ACTE</label>
+                {{ form_widget(form.typeActe,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'SELECTIONNER LE TYPE DE LACTE','required':'required'}}) }}
+
+            </div>
+
+        </div>
+
+        <div class="contenu" style="margin-top: -10px">
+            <div class="row">
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">Date</label>
+                    {{ form_widget(form.date,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Date' }}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="sr-onl" for="userinput1">Numéro de l'acte</label>
+                    {{ form_widget(form.numero,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Numéro Acte' }}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">Montant de la transaction</label>
+                    {{ form_widget(form.montant,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Montant de la transaction'}}) }}
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12 ">
+                    <label class="sr-onl" for="userinput1">Objet</label>
+                    {{ form_widget(form.objet,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Objet'}}) }}
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12 ">
+                    <label class="sr-onl" for="userinput1">Details</label>
+                    {{ form_widget(form.detail,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Details'}}) }}
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12 vente">
+                    <label class="sr-onl" for="userinput1">Etat du bien</label>
+                    {{ form_widget(form.etatBien,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Etat bien'}}) }}
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6 ">
+                    <label class="sr-onl" for="userinput1">Vendeur</label>
+                    {{ form_widget(form.vendeur,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Vendeur'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label class="sr-onl" for="userinput1">Acheteur</label>
+                    {{ form_widget(form.acheteur,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Acheteur'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+               {# <div class="form-group col-md-6 type">
+                    <label class="sr-onl" for="userinput1">Acheteur</label>
+                    {{ form_widget(form.typeActe,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Acheteur'}}) }}
+                    #}{# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}{#
+                </div>#}
+            </div>
+
+
+        </div>
+
+        <span class="col-lg-12 groupe" id="groupe" data-prototype="{{ image(form.fichiers.vars.prototype)|e('html_attr') }}">
+
+            {#   <div class="row" >#}
+
+            {#   <div class="col-md-1">#}
+            {#  <button type="button" class="waves-effect waves-light btn btn-primary  add_intervention" >
+                  <i class="fa fa-plus-circle"></i></button>#}
+
+            {#   </div>#}
+
+            {# </div>
+             <br>#}
+            <div class="col-md-12">
+                <a href="#" class="btn btn-secondary add_groupe" style="margin-left: -20px" data-card-tool="remove"
+                   data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove Card">Ajouter un
+                    fichier </a>
+            </div>
+            {% for row in form.fichiers %}
+                <span class="container col-md-12">
+                    {{ image(row|e) }}
+
+                </span>
+            {% endfor %}
+ <input class="after" type="hidden"/>
+        </span>
+
+
+    </div>    {{ form_end(form) }}
+    <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button class="btn btn-primary" id="lancer">Valider</button>
+        <button class="btn btn-primary typeVente"   data-bs-toggle="modal" data-bs-target="#extralargemodal" >
+            <i class="tio-user-add mr-1"></i>Nouveau
+        </button>
+        <a class="btn btn-secondary bg-secondary-gradient mt-3 offset-7" {% if new !="admin" %} href="{{ path('acte_new') }}" {% endif%} {% if modal=="modal" %} data-bs-toggle="modal" data-bs-target="#largemodal" {% endif %}>
+            <i class="fe fe-plus"></i>Nouveau
+        </a>
+        <button class="nav-link icon text-center test" data-bs-target="#country-selector" data-bs-toggle="modal">
+            <i class="fe fe-globe"></i><span class="fs-16 ms-2 d-none d-xl-block">English</span>
+        </button>
+    </div>
+
+
+
+{% endblock %}
+{#{% include 'admin/macros/fichier.html.twig'  %}#}
+
+{% block javascripts %}
+    <script src="{{ asset('admin/admin/js/jquery3.1.js') }}"></script>
+    {# <script src="{{ asset('assets/admin/js/jquery.js') }}"></script>#}
+    <script src="{{ asset('admin/admin/js/groupe.js') }}"></script>
+    <script>
+        $('.contenu').remove();
+        $('.groupe').remove();
+       /* $('.typeVente').hide();*/
+
+
+            $("#acte_typeActe").on('change',function () {
+
+
+                alert('ghgd')
+            })
+        $("#lancer").on('click',function () {
+
+            //console.log("fff",$("#acte_typeActe").val())
+            $('.typeVente').click()
+            //alert('ghgd')
+        })
+
+
+    </script>
+{% endblock %}

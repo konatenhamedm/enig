@@ -1,0 +1,16 @@
+{% extends 'fils/base.html.twig' %}
+
+{% block body %}
+    {% set new=menu.getRoute %}
+    {% if new == 'home' %}
+        {% include 'fils/_includes/header.html.twig' %}
+    {% else %}
+        {% include 'fils/_includes/header1.html.twig' with {'new':new }%}
+
+    {% endif %}
+    {% block page_content %}
+
+    {% endblock %}
+
+    {% include 'fils/_includes/footer.html.twig' %}
+{% endblock %}

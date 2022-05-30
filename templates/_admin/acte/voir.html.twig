@@ -1,0 +1,141 @@
+{#
+{% extends '_admin/_includes/index.html.twig' %}
+#}
+
+{% form_theme form _self %}
+   {% block style %}
+       <style>
+           .checkbox {
+               height: 20px;
+               margin-left: -23px
+           }
+       </style>
+   {% endblock %}
+{% from '_admin/macros/fichier-acte.html.twig' import image %}
+{% block page_content %}
+
+    <div class="modal-header bg-secondary-gradient">
+        <h2 class="modal-title" style="margin-top: -15px;color: white">DETAILS-{{ titre | upper  }}</h2>
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <br>
+    {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
+    <div class="modal-body">
+        <div class="contenu" style="margin-top: -10px">
+
+            <div class="row">
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">Date</label>
+                    {{ form_widget(form.date,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Date' }}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="sr-onl" for="userinput1">Numéro du dossier</label>
+                    {{ form_widget(form.numero,{'attr':{'class':'form-select form-control border-primary','id':'userinput1','placeholder':'Numéro du dossier' }}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 ">
+                    <label class="sr-onl" for="userinput1">Montant de la transaction</label>
+                    {{ form_widget(form.montant,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Montant de la transaction'}}) }}
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12 ">
+                    <label class="sr-onl" for="userinput1">Objet</label>
+                    {{ form_widget(form.objet,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Objet'}}) }}
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12 ">
+                    <label class="sr-onl" for="userinput1">Details</label>
+                    {{ form_widget(form.detail,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Details'}}) }}
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12 vente">
+                    <label class="sr-onl" for="userinput1">Etat du bien</label>
+                    {{ form_widget(form.etatBien,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Etat bien'}}) }}
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6 ">
+                    <label class="sr-onl" for="userinput1">Vendeur</label>
+                    {{ form_widget(form.vendeur,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Vendeur'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-6 ">
+                    <label class="sr-onl" for="userinput1">Acheteur</label>
+                    {{ form_widget(form.acheteur,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Acheteur'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+
+            </div>
+
+
+        </div>
+        <span class="col-lg-12 groupe" id="groupe" data-prototype="{{ image(form.fichiers.vars.prototype)|e('html_attr') }}">
+
+
+            <div class="col-md-12">
+                <a href="#" class="btn btn-secondary add_groupe" style="margin-left: -20px" data-card-tool="remove"
+                   data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove Card">Ajouter un
+                    fichier </a>
+            </div><br>
+              <h4>ARCHIVAGE DES DOCUMENTS</h4>
+            <h3 style="color: blue; text-decoration: underline;">Liste des documents</h3>
+            <br>
+                {% for fichier in data %}
+                    <div class="row">
+           <div class="col-md-7">
+               <div class="form-group">
+
+                   <input class="form-control titre" type="text" value="{{ fichier.titre | upper}}">
+               </div>
+           </div>
+           <div class="col-md-3">
+               <a class="btn btn-primary-gradient" target="_blank" href="{{ asset('uploads/images/' ~ fichier.path) }}" download> <i class="fe fe-download"></i>
+                   <span style="font-weight: bolder;color: white">Télecharger</span></a>
+           </div>
+       </div>
+                {% endfor %}
+            {% for row in form.fichiers %}
+                <span class="container col-md-12 existe">
+                    {{ image(row|e) }}
+
+                </span>
+            {% endfor %}
+ <input class="after" type="hidden"/>
+        </span>
+
+    </div>
+    <div class="modal-footer">
+        <a href="{{ path('acte') }}" class="btn btn-secondary">Fermer</a>
+    </div>
+    {{ form_end(form) }}
+
+
+{% endblock %}
+{#{% include 'admin/macros/fichier.html.twig'  %}#}
+
+{% block javascripts %}
+    <script src="{{ asset('admin/admin/js/jquery3.1.js') }}"></script>
+    {# <script src="{{ asset('assets/admin/js/jquery.js') }}"></script>#}
+    <script src="{{ asset('admin/admin/js/groupe.js') }}"></script>
+    <script>
+        $('.existe').remove()
+        $('.titre').attr('readonly', true)
+
+
+
+    </script>
+{% endblock %}
